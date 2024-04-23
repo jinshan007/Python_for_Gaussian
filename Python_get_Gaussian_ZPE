@@ -1,0 +1,32 @@
+import os
+import sys
+
+# Function to process the file
+def process_file(filename):
+    norm_term_counter = 0
+    if os.path.exists(filename):
+        with open(filename, 'r+') as logfile:
+            for line in logfile:
+                if 'Sum of electronic and zero-point Energies' in line:
+                    L1 = line.split()
+
+                    print("Sum of electronic and zero-point Energies:" + L1[-1])
+                if 'Sum of electronic and thermal Free Energies' in line:
+                    L2 = line.split()
+
+                    print("Sum of electronic and thermal Free Energies:" + L2[-1])
+
+# Function to wait for user input
+def wait_for_input():
+    input("Press Enter to exit...")
+
+# Main code
+if __name__ == "__main__":
+    # Ask user for file name
+    filename = input("Enter the filename: ")
+
+    # Process the file
+    process_file(filename)
+
+    # Wait for user input to exit
+    wait_for_input()
